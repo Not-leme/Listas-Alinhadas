@@ -1,5 +1,6 @@
 
 package listaligadasimplesbase;
+import javax.swing.JOptionPane;
 
 public class Listaligadasimplesbase {
 
@@ -8,18 +9,40 @@ public class Listaligadasimplesbase {
     
     public static void main(String[] args) {
 
-        for(int i = 0; i < 1; i++){
-            No Novo = new No(i);
-            insereFim(i);
+        
+        int valor, verificacao = Integer.parseInt(JOptionPane.showInputDialog("1 - Insere Inicio\n2 - Insere Fim\n3 - Remove Inicio\n4 - Remove Fim\n5 - Exibe\n6 - Exibe Invertido\n10 - Terminar"));
+        boolean Flag = true;
+        
+        while(Flag){
+            switch(verificacao){
+            case 1:
+                valor = Integer.parseInt(JOptionPane.showInputDialog("Valor"));
+                insereInicio(valor);
+                break;
+            case 2:
+                valor = Integer.parseInt(JOptionPane.showInputDialog("Valor"));
+                insereFim(valor);
+                break;
+            case 3:
+                removeInicio();
+                break;
+            case 4:
+                removeFim();
+                break;
+            case 5:
+                exibe();
+                break;
+            case 6:
+                exibeInverso();
+                break;
+            case 10:
+                Flag = false;
+                break;
+            default:
+                break;
+        }
         }
         
-        removeFim();
-        
-        exibe();
-        if(inicio != null){
-            System.out.println("Valor do fim: " + fim.valor);
-            System.out.println("Valor do inicio: " + inicio.valor);
-        }
         
         
     }

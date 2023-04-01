@@ -12,7 +12,8 @@ public class Listaligadasimplesbase {
         boolean Flag = true;
 
         while (Flag) {
-            int valor, verificacao = Integer.parseInt(JOptionPane.showInputDialog("1 - Insere Inicio\n2 - Insere Fim\n3 - Remove Inicio\n4 - Remove Fim\n5 - Exibe\n6 - Exibe Invertido\n10 - Terminar"));
+            int valor, verificacao = Integer.parseInt(JOptionPane.showInputDialog("1 - Insere Inicio\n2 - Insere Fim\n3 - Remove Inicio\n4 - Remove Fim\n5 - Exibe"
+                    + "\n6 - Exibe Invertido\n7 - Empilhar\n8 - Desempilhar\n9 - Topo\n10 - Vazia\n11 - Cheia\n12 - Tamanho\n20 - Terminar"));
 
             switch (verificacao) {
                 case 1:
@@ -35,7 +36,25 @@ public class Listaligadasimplesbase {
                 case 6:
                     exibeInverso();
                     break;
+                case 7:
+                    Empilhar(Integer.parseInt(JOptionPane.showInputDialog("Valor")));
+                    break;
+                case 8:
+                    Desempilhar();
+                    break;
+                case 9:
+                    Topo();
+                    break;
                 case 10:
+                    Vazia();
+                    break;
+                case 11:
+                    Cheia();
+                    break;
+                case 12:
+                    Tamanho();
+                    break;
+                case 20:
                     Flag = false;
                     break;
                 default:
@@ -145,6 +164,65 @@ public class Listaligadasimplesbase {
 
             }
 
+        }
+    }
+
+    private static void Empilhar(int valor) {
+        No Novo = new No(valor);
+
+        if (fim == null) {
+            inicio = Novo;
+            fim = Novo;
+        } else {
+            fim.prox = Novo;
+            fim = Novo;
+        }
+    }
+
+    private static void Desempilhar() {
+        No temp = inicio;
+
+        if (fim == null) {
+            JOptionPane.showConfirmDialog(null, "Nao ha termos");
+        } else {
+            while (temp.prox != fim) {
+                temp = temp.prox;
+            }
+            fim = temp;
+        }
+
+    }
+
+    private static void Topo() {
+        if (fim == null) {
+            JOptionPane.showConfirmDialog(null, "Nao ha termos");
+        } else {
+            JOptionPane.showConfirmDialog(null, "Topo: " + fim);
+        }
+    }
+
+    private static void Vazia() {
+        if (fim == null) {
+            JOptionPane.showConfirmDialog(null, "Esta vazia");
+        }
+    }
+
+    private static void Cheia() {
+        JOptionPane.showConfirmDialog(null, "Nao ha limites, apenas em sua memoria ram");
+    }
+
+    private static void Tamanho() {
+        No temp = inicio;
+
+        if (inicio == null) {
+            System.out.println("Nao ha termos");
+        } else {
+            int tamanho = 1;
+            while (temp.prox != null) {
+                tamanho += 1;
+                temp = temp.prox;
+            }
+            JOptionPane.showConfirmDialog(null, "Tamanho: " + tamanho);
         }
     }
 

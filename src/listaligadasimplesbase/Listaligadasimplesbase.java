@@ -12,8 +12,9 @@ public class Listaligadasimplesbase {
         boolean Flag = true;
 
         while (Flag) {
-            int valor, verificacao = Integer.parseInt(JOptionPane.showInputDialog("1 - Insere Inicio\n2 - Insere Fim\n3 - Remove Inicio\n4 - Remove Fim\n5 - Exibe"
-                    + "\n6 - Exibe Invertido\n7 - Empilhar\n8 - Desempilhar\n9 - Topo\n10 - Vazia\n11 - Cheia\n12 - Tamanho\n20 - Terminar"));
+            int valor, verificacao = Integer.parseInt(JOptionPane.showInputDialog("Listas Alinhadas\n1 - Insere Inicio\n2 - Insere Fim\n3 - Remove Inicio\n4 - Remove Fim\n5 - Exibe"
+                    + "\n6 - Exibe Invertido\n\nMetodos de Pilha\n7 - Empilhar\n8 - Desempilhar\n9 - Topo\n10 - Vazia\n11 - Cheia\n12 - Tamanho"
+                    + "\n\nMetodos de Fila\n13 - Enfileirar\n14 - Desenfileirar\n15 - Cabeca\n16 - Cauda\n\n20 - Terminar"));
 
             switch (verificacao) {
                 case 1:
@@ -53,6 +54,18 @@ public class Listaligadasimplesbase {
                     break;
                 case 12:
                     Tamanho();
+                    break;
+                case 13:
+                    Enfileirar(Integer.parseInt(JOptionPane.showInputDialog("Valor")));
+                    break;
+                case 14:
+                    Desenfileirar();
+                    break;
+                case 15:
+                    Cabeca();
+                    break;
+                case 16:
+                    Cauda();
                     break;
                 case 20:
                     Flag = false;
@@ -223,6 +236,51 @@ public class Listaligadasimplesbase {
                 temp = temp.prox;
             }
             JOptionPane.showConfirmDialog(null, "Tamanho: " + tamanho);
+        }
+    }
+
+    private static void Enfileirar(int valor) {
+        No Novo = new No(valor);
+
+        if (inicio == null) {
+            inicio = Novo;
+            fim = Novo;
+        } else {
+            Novo.prox = inicio;
+            inicio = Novo;
+        }
+    }
+
+    private static void Desenfileirar() {
+        if (fim == null) {
+            System.out.println("Nao ha termos");
+        } else if (inicio == fim) {
+            inicio = null;
+            fim = null;
+        } else {
+            No temp = inicio;
+
+            while (temp.prox != fim) {
+                temp = temp.prox;
+            }
+            temp.prox = null;
+            fim = temp;
+        }
+    }
+
+    private static void Cabeca() {
+        if (inicio == null) {
+            System.out.println("Nao ha termos");
+        } else {
+            System.out.println(inicio.valor);
+        }
+    }
+    
+    private static void Cauda() {
+        if (fim == null) {
+            System.out.println("Nao ha termos");
+        } else {
+            System.out.println(fim.valor);
         }
     }
 

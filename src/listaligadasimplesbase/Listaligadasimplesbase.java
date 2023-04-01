@@ -77,6 +77,10 @@ public class Listaligadasimplesbase {
 
     }
 
+    public static void NaoHaTermos() {
+        JOptionPane.showConfirmDialog(null, "Nao ha termos");
+    }
+
     private static void insereInicio(int x) {
         No Novo = new No(x);
 
@@ -108,7 +112,7 @@ public class Listaligadasimplesbase {
 
     private static void removeInicio() {
         if (inicio == null) {
-            System.out.println("Nao ha termos");
+            NaoHaTermos();
         } else if (inicio.prox == null) {
             inicio = null;
             fim = null;
@@ -119,7 +123,7 @@ public class Listaligadasimplesbase {
 
     private static void removeFim() {
         if (fim == null) {
-            System.out.println("Nao ha termos");
+            NaoHaTermos();
         } else if (inicio == fim) {
             inicio = null;
             fim = null;
@@ -138,7 +142,7 @@ public class Listaligadasimplesbase {
         No temp = inicio;
 
         if (inicio == null) {
-            System.out.println("Nao ha termos");
+            NaoHaTermos();
         } else {
             System.out.println(temp.valor);
             while (temp.prox != null) {
@@ -152,7 +156,7 @@ public class Listaligadasimplesbase {
         No FinalTemp = fim;
 
         if (fim == null) {
-            JOptionPane.showConfirmDialog(null, "Nao ha termos");
+            NaoHaTermos();
         } else if (inicio.prox == null) {
             JOptionPane.showConfirmDialog(null, inicio.valor);
         } else {
@@ -196,7 +200,7 @@ public class Listaligadasimplesbase {
         No temp = inicio;
 
         if (fim == null) {
-            JOptionPane.showConfirmDialog(null, "Nao ha termos");
+            NaoHaTermos();
         } else {
             while (temp.prox != fim) {
                 temp = temp.prox;
@@ -208,7 +212,7 @@ public class Listaligadasimplesbase {
 
     private static void Topo() {
         if (fim == null) {
-            JOptionPane.showConfirmDialog(null, "Nao ha termos");
+            NaoHaTermos();
         } else {
             JOptionPane.showConfirmDialog(null, "Topo: " + fim);
         }
@@ -228,7 +232,7 @@ public class Listaligadasimplesbase {
         No temp = inicio;
 
         if (inicio == null) {
-            System.out.println("Nao ha termos");
+            NaoHaTermos();
         } else {
             int tamanho = 1;
             while (temp.prox != null) {
@@ -253,8 +257,9 @@ public class Listaligadasimplesbase {
 
     private static void Desenfileirar() {
         if (fim == null) {
-            System.out.println("Nao ha termos");
+            NaoHaTermos();
         } else if (inicio == fim) {
+            JOptionPane.showConfirmDialog(null, "Removido: " + fim.valor);
             inicio = null;
             fim = null;
         } else {
@@ -263,22 +268,22 @@ public class Listaligadasimplesbase {
             while (temp.prox != fim) {
                 temp = temp.prox;
             }
-            temp.prox = null;
+            JOptionPane.showConfirmDialog(null, "Removido: " + fim.valor);
             fim = temp;
         }
     }
 
     private static void Cabeca() {
         if (inicio == null) {
-            System.out.println("Nao ha termos");
+            NaoHaTermos();
         } else {
             System.out.println(inicio.valor);
         }
     }
-    
+
     private static void Cauda() {
         if (fim == null) {
-            System.out.println("Nao ha termos");
+            NaoHaTermos();
         } else {
             System.out.println(fim.valor);
         }
